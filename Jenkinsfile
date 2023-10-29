@@ -7,11 +7,6 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Unit Tests (Backend)') {
-            steps {
-                sh 'mvn test'
-            }
-        }
         stage('Build Backend') {
             steps {
                 sh 'mvn package'
