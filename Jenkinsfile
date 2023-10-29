@@ -2,21 +2,33 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Backend') {
             steps {
-                checkout scm
+                script {
+                    checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/oueslatimohamed/devops_back_end.git']]])
+                }
             }
         }
+
         stage('Build Backend') {
             steps {
-                sh 'mvn package'
+                sh 'cd backend && mvn clean install'
             }
         }
+
+        stage('Checkout Frontend') {
+            steps {
+                script {
+                    checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/oueslatimohamed/devops_front_end.git']]])
+                }
+            }
+        }
+
         stage('Build Frontend') {
             steps {
-                sh 'npm install'
-                sh 'ng build'
+                sh 'cd frontend && npm install && ng build --prod'
             }
         }
     }
 }
+
