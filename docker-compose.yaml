@@ -4,7 +4,7 @@ services:
   mysqldb:
     image: mysql:5.7
     networks:
-      - mysql
+      - network
     environment:
       MYSQL_DATABASE: 'devops'
       MYSQL_ROOT_PASSWORD: 'root'
@@ -16,9 +16,11 @@ services:
       - mysqldb
     ports:
       - "8082:8082"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/devops?createDatabaseIfNotExist=true
     networks:
-      - mysql
+      - network
     image: devops
 
 networks:
-  mysql:
+  network:
