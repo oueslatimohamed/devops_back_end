@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Supplier
+            idSupplier="1"
+            code="S001"
+            label="Supplier 1"
+            supplierCategory="ORDINAIRE"/>
+    <Stock
+            idStock="1"
+            title="Stock 1"/>
+    <Product
+            idProduct="1"
+            title="Product 1"
+            price="10.99"
+            quantity="100"
+            category="ELECTRONICS"
+            stock_idStock="1"/>
+    <Operator
+            idOperateur="1"
+            fname="John"
+            lname="Doe"
+            password="password123"/>
+    <Invoice
+            idInvoice="1"
+            amountDiscount="5.00"
+            amountInvoice="100.00"
+            dateCreationInvoice="2023-01-01"
+            dateLastModificationInvoice="2023-01-02"
+            archived="false"
+            supplier_idSupplier="1"/>
+    <InvoiceDetail
+            idInvoiceDetail="1"
+            quantity="2"
+            price="20.00"
+            product_idProduct="1"
+            invoice_idInvoice="1"/>
+</dataset>
